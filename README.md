@@ -25,7 +25,7 @@
 
 `dsetool create_core movie_db.movies reindex=true generateResources=true`
 
-* Verify the Solr core was created by browsing to the [Solr Management Interface](http://localhost:8983/solr) and trying some basic queries.
+* Verify the Solr core was created by browsing to the [Solr Management Interface](http://54.187.82.98:8983/solr) and trying some basic queries.
 
 * Experiment with different Solr Queries in the management interface.
 
