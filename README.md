@@ -11,6 +11,12 @@
 
 * Use cqlsh to verify the data was loaded
 
+* Run the java program to page through the data
+`java -jar CassandraJavaExamples-0.1-jar-with-dependencies.jar view node0`
+
+* Run the java mapping example to view information about a movie
+`java -jar CassandraJavaExamples-0.1-jar-with-dependencies.jar map 1193 node0`
+
 * Connect DevCenter to cluster
 
 #Making the Movie Lens data searchable with Solr

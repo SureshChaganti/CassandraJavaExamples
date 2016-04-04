@@ -11,13 +11,13 @@ import java.io.IOException;
 
 public class MappingDemo {
 
-    public void viewMovieData(String hostname) throws IOException {
+    public void viewMovieData(int movie_id, String hostname) throws IOException {
         try (Cluster clusterConn = ConnectionUtil.connect(hostname)) {
             try (Session session = clusterConn.newSession()) {
                 MappingManager manager = new MappingManager(session);
                 Mapper<Movies> moviesMapper = manager.mapper(Movies.class);
-                Movies movieBrazil = moviesMapper.get(1199);
-                System.out.println("movieBrazil = " + movieBrazil);
+                Movies movieData = moviesMapper.get(movie_id);
+                System.out.println("movie data = " + movieData);
 
             }
         }

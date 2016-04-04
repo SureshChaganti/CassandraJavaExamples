@@ -39,9 +39,10 @@ public class LoadData {
                 new DataPagingDemo().viewMovieData(hostname);
             }
             else {
-                hostname = args[1];
+                int movie_id  = Integer.parseInt(args[1]);
+                hostname = args[2];
                 System.out.println("hostname = " + hostname);
-                new MappingDemo().viewMovieData(hostname);
+                new MappingDemo().viewMovieData(movie_id, hostname);
             }
         }
         else {
