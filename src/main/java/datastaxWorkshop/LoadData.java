@@ -59,7 +59,7 @@ public class LoadData {
 
                 MappingManager manager = new MappingManager(session);
                 Mapper<Movies> moviesMapper = manager.mapper(Movies.class);
-                //readMovieData(movieDataLocation, movieData -> saveMovieWithMapper(moviesMapper, movieData));
+                readMovieData(movieDataLocation, movieData -> saveMovieWithMapper(moviesMapper, movieData));
 
                 PreparedStatement insertRatingStatement = session.prepare(
                         "INSERT INTO movie_db.rating_by_movie " +
