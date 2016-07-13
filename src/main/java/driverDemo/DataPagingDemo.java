@@ -18,16 +18,20 @@ public class DataPagingDemo {
 
                 MappingManager manager = new MappingManager(session);
                 Mapper<Movies> moviesMapper = manager.mapper(Movies.class);
-                pageMovieData(session);
+
+                //String query = "select * from movie_db.movies";
+
+                String query = "select * from movie_db.movies where solr_query = 'categories:Drama*';";
+                pageMovieData(session, query);
             }
         }
     }
 
 
-    public void pageMovieData(Session session) throws IOException {
+    public void pageMovieData(Session session, String query) throws IOException {
         Scanner scanIn = new Scanner(System.in);
 
-        Statement statement = new SimpleStatement("select * from movie_db.movies").setFetchSize(20);
+        Statement statement = new SimpleStatement(query).setFetchSize(20);
         ResultSet resultSet = session.execute(statement);
 
         while (true) {

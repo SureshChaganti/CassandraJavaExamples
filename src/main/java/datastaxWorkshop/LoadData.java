@@ -17,12 +17,23 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
 
+import driverDemo.SelectTestRunner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class LoadData {
+
+    private static Logger logger = LoggerFactory.getLogger(LoadData.class);
 
     public static void main(String[] args) throws IOException {
 
+        logger.info("Starting main");
+        logger.info(args.toString());
+        logger.info("Done main");
+
         String movieDataLocation = "";
         String hostname = "";
+
         if (args.length > 1) {
 
             String loadOrView = args[0];
@@ -37,6 +48,11 @@ public class LoadData {
                 hostname = args[1];
                 System.out.println("hostname = " + hostname);
                 new DataPagingDemo().viewMovieData(hostname);
+            }
+            else  if (loadOrView.equalsIgnoreCase("test")){
+                hostname = args[1];
+                System.out.println("hostname = " + hostname);
+                new SelectTestRunner().runSelectTest(hostname);
             }
             else {
                 int movie_id  = Integer.parseInt(args[1]);
