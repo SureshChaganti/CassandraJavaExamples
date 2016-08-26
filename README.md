@@ -1,5 +1,7 @@
 #Load the Movie Lens Data into Cassandra
 
+* Download the movielens 10 million ratings data set from http://grouplens.org/datasets/movielens/
+
 * Create the schema for the movie data using the cql in conf/movie_db.cql
 `cqlsh node0 -f movie_db.cql`
 

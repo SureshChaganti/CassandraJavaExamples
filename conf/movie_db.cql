@@ -22,8 +22,8 @@ create table movie_db.average_rating (
 );
 
 create table movie_db.movies_by_category (
-    category text,
-    movie_id int,
-    title text,
-    primary key(category, movie_id)
-);
+      category text,
+      movie_id int,
+      title text,
+      primary key(category, movie_id)
+  );
