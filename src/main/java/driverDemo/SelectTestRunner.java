@@ -17,28 +17,13 @@ public class SelectTestRunner {
         try (Cluster clusterConn = ConnectionUtil.connect(hostname)) {
             try (Session session = clusterConn.newSession()) {
 
-                String query1 = "select * from udt.demo where solr_query='*:*'";
+                String query1 = "select * from movie_db.movies where solr_query = 'categories:Drama';";
                 runSelectTest(session, query1);
                 System.out.println();
                 System.out.println();
 
-                String query2 = "select * from udt.demo where solr_query='{!tuple}name.firstname:Berenguer'";
+                String query2 = "select * from movie_db.movies where solr_query = '{\"q\":\"categories:*\",\"facet\":{\"field\":\"categories\"}}';\n";
                 runSelectTest(session, query2);
-                System.out.println();
-                System.out.println();
-
-                String query3 = "select * from udt.demo where solr_query='{!tuple}magic_numbers.field1:14'";
-                runSelectTest(session, query3);
-                System.out.println();
-                System.out.println();
-
-                String query4 = "select * from udt.demo where solr_query='{!tuple}friends.surname:Zasada'";
-                runSelectTest(session, query4);
-                System.out.println();
-                System.out.println();
-
-                String query5 = "select * from udt.demo where solr_query='({!tuple}friends.surname:Zasada AND {!tuple}friends.surname:Blasi)'";
-                runSelectTest(session, query5);
                 System.out.println();
                 System.out.println();
             }

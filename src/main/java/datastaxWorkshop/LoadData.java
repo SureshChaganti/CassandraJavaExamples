@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
 import driverDemo.SelectTestRunner;
@@ -96,7 +97,7 @@ public class LoadData {
                 fileReader);
 
         String line = reader.readLine();
-        while (line != null) {
+        while (line != null)  {
             //save to Cassandra here
             line = reader.readLine();
             processMovieDataLine(movieDataConsumer, line);
@@ -125,16 +126,19 @@ public class LoadData {
         moviesMapper.save(movie);
     }
 
+
     private void readRatingData(String filePath, Consumer<Rating> ratingDataConsumer) throws IOException {
         FileReader fileReader = new FileReader(filePath + "/ratings.dat");
         BufferedReader reader = new BufferedReader(
                 fileReader);
 
+        AtomicInteger counter = new AtomicInteger();
         String line = reader.readLine();
-        while (line != null) {
+        while ( (line != null) && (counter.get() < 10000) ) {
             //save to Cassandra here
             line = reader.readLine();
             processRatingDataLine(ratingDataConsumer, line);
+            counter.getAndIncrement();
         }
 
     }
